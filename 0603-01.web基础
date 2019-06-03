@@ -51,3 +51,86 @@ c.c/s架构软件
 github   gitlab
 好处:方便学习，加快升级
 坏处:相对不安全
+
+3.访问网站的过程(www.sina.com.cn)
+a.浏览器中输入www.sina.com.cn
+b.在电脑的hosts文件中搜索是否有www.sina.com.cn对应的IP地址，如果有，直接进行访问
+c.如果没有，通过网络把请求数据发送到电信DNS(域名解析服务器)进行解析(域名解析为IP)
+d.把请求通过网络发送到对应IP的web服务器上
+e.web服务器解析发过来的请求，发送到数据库服务器上
+f.数据库服务器返回响应数据给web服务器进行整合，发送回浏览器
+
+4.URL(统一资源定位器)
+http://sports.sina.com.cn:80/slamdunk/live.shtml?id=2019060328
+a.协议 http://
+b.域名 sports.sina.com.cn
+c.端口 80(浏览器中不显示)
+d.虚拟目录
+e.访问的文件
+f.访问文件的参数
+
+a.协议
+一组规则规范，约束，制度
+http协议(超文本传输协议)
+	规定了数据在传输中先传输什么后传输什么，怎样传输
+	超文本(富文本)：声音、图像、视频。。。
+	普通文本
+http协议特点：无状态(彼此不记录过去的行为)
+http协议请求：
+	get  请求信息显示在URL上，相对不安全，主要用于查看
+		https://s.taobao.com/search?q=lv&imgfile=&commend=all&ssid=s5-e&search_type=item&sourceId=tb.index&spm=a21bo.2017.201856-taobao-item.1&ie=utf8&initiative_id=tbindexz_20170306
+		https://s.taobao.com/search?q=zara&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20190603&ie=utf8
+	post 请求信息显示在请求体中，相对安全，主要用于提交
+cookie&session
+	cookie  访问记录(验证信息)  定投广告      存放在客户端
+	session 验证信息           30分钟超时    存放在服务端
+状态码
+	200  	2开头请求成功
+	302     3开头移动或者缓存(重定向)
+	404     4开头客户端请求有问题
+	500     5开头服务端有问题
+
+b.域名
+FQDN(完全合格域名)
+heygor.zhenshuai.com
+test.memeda.cn
+DNS(域名解析服务器)
+	正向解析(域名--IP)
+	win+r--cmd--nslookup www.baidu.com
+	win+r--cmd--ping www.baidu.com
+	反向解析(IP--域名)
+	win+r--cmd--nslookup 14.215.177.38
+c.端口
+	区分应用层进程的标识
+	apache/nginx/iis    80
+	tomcat              8080
+	oracle              1521
+	mysql               3306
+	win下面查看端口信息
+	win+r--cmd--netstat -an 
+
+
+5.抓包
+a.常见抓包工具
+	F12
+	httpwatch
+	fiddler
+	wireshark
+	burpsuite
+b.抓包原理
+	中间人
+c.抓包信息
+	c1.基础信息
+		访问地址
+		状态码
+		文件类型
+		参考页面
+		文件大小
+		加载时间
+	c2.请求头信息
+	c3.请求体信息
+	c4.响应头信息
+	c5.响应体信息
+
+
+
