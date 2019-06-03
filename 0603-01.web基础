@@ -1,0 +1,53 @@
+1.常见的软件架构
+	微信        c/s  b/s
+	QQ          c/s
+	抖音        c/s
+	头条        c/s   b/s
+	bilibili    c/s   b/s
+	百度地图    c/s   b/s
+	斗鱼、虎牙   c/s   b/s
+	京东       c/s   b/s
+	三国杀     c/s   b/s
+a.单机软件
+	不需要网络就可以执行的应用程序
+b.b/s架构软件
+	b:浏览器
+		IE           QQ 360 uc 遨游 搜狗  
+		firefox      测试  插件
+		chrome       开发  
+		safari       
+	s:服务器
+		性能非常牛逼的电脑
+c.c/s架构软件
+	c:客户端
+		pc端  （台式、笔记本）
+		移动端 (手机、ipad、智能终端)
+	s:服务器
+		性能非常牛逼的电脑
+2.前端和后端
+前端
+	html  标记性语言  静态页面(在服务器上什么样子，在网页上什么样子) html5 
+	css   样式表      结构美化                                   css3
+	js    javascript 动态页面(动画、交互)
+		  java       后端语言
+		  jsp        java server page
+	ui    美工        细节美化
+后端
+	操作系统
+		unix      mac
+		linux     ubuntu
+		windows   win7
+	web服务器
+		apache    不支持java
+		nginx     轻量级web服务器，反向代理，负载均衡
+		iis       微软
+		tomcat    java
+	数据库服务器
+		oracle      甲骨文
+		mysql       甲骨文
+		sqlserver   微软
+
+开源：源代码开放
+github   gitlab
+好处:方便学习，加快升级
+坏处:相对不安全
