@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+/*		子代选择器
+		a>b
+		a的作用是限制条件
+		真正修饰的是b*/
+		ul>li>div {
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div>我是ul外的div1</div>
+	<ul>
+		<li>
+			我是li中文字2
+			<div>我是li中的div中的文字3</div>
+		</li>
+		<div>我是ul中的div标签中文字4</div>
+	</ul>
+</body>
+</html>
