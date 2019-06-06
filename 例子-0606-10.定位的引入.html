@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+		}
+		.div1 {
+			background-color: pink;
+		}
+		.div2 {
+			background-color: skyblue;
+			/*绝对定位会脱离文档流，块将不块，行将不行*/
+			position: absolute;
+			left:100px;
+			top:100px;
+		}
+		.div3 {
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+</body>
+</html>

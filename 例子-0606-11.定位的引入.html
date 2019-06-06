@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			padding: 0px;
+			margin: 0px;
+		}
+		div {
+			width: 100px;
+			height: 100px;
+		}
+		.div1 {
+			background-color: pink;
+			float: left;
+		}
+		.div2 {
+			background-color: skyblue;
+		}
+		.div3 {
+	/*		background-color: green;
+			绝对定位脱离文档流，提升层级一层
+			定位元素(不包括相对定位)层级必然比浮动层级高
+			浮动元素只有一层，同一个位置只能有一个浮动元素
+			定位元素有N层，同一个位置可以有无数个定位元素*/
+			background-color: yellow;
+			position: absolute;
+			top:0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+</body>
+</html>
