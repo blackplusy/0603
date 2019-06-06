@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+/*	float  浮动
+		none(默认值)  不浮动
+		left         向左浮动
+		right        向右浮动
+*/
+	/*浮动为什么会变成左右布局？*/
+/*	浮动导致元素脱离文档流，脱离文档流后所有标签都会失去原先显示的特性(display)
+	块将不块(div不会独占一行)，行将不行(span标签支持所有css命令)*/
+		.div1 {
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			/*float:left;*/
+		}
+
+		.div2 {
+			width: 100px;
+			height: 100px;
+			background-color: skyblue;
+			float: left;
+
+		}
+/*		.div3 {
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+		}*/
+
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<!-- <div class="div3"></div> -->
+
+</body>
+</html>
