@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+/*	为什么使用图片精灵？
+	主要是为了考虑页面加载效率优化
+		1.图片总大小变小
+		2.图片个数减小，减少了http请求次数*/
+		/*怎么做雪碧图？2步*/
+		div {
+			width: 100px;
+			height: 100px;
+			border: 10px solid black;
+			/*1.引用背景大图*/
+			background-image: url(图片1.png);
+		}
+		.div1 {
+			/*2.写背景图片定位*/
+/*			当你需要将背景图向右调整时候使用正值，向左则为负值，同理将背景上校调动时候上是负值，下是正值*/
+			background-position: -234px -104px;
+		}
+		.div2 {
+			background-position: -44px -342px;
+		}
+		.div3 {
+			background-position: -467px -329px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+</body>
+</html>
