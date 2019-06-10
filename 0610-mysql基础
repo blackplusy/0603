@@ -105,6 +105,28 @@ e.mysql基础命令
 	select * from ecs_goods;
 		查看表ecs_gooods中有哪些数据
 
+f.表、表格
+	表类似于表格，有行、有列、表头等
+	1.常见数据类型
+		数字类型  123 100   			int
+		字符类型  'abc' '123'        char  varchar
+		日期类型  '1988-01-01'       date
+	2.表结构的创建
+		语法:
+		create table 表名 (
+			列  数据类型，
+			列  数据类型，
+			....
+		);
+		需求:创建表商品(goods),商品名称(name) 字符类型 ,商品价格(price) 数字类型，出厂日期 (ddate) 日期类型
+		create table goods (
+			name char(20),
+			price int,
+			ddate date
+		);
+		补充:查看表结构
+		desc goods;
+			查看goods表的表结构
 		
 
 
