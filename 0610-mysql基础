@@ -127,7 +127,49 @@ f.表、表格
 		补充:查看表结构
 		desc goods;
 			查看goods表的表结构
-		
+	3.表结构的修改
+		增加列
+		需求:商品表中增加列,备注(beizhu) 字符类型 最多20个字符
+		alter table goods add beizhu char(20);
+		修改列
+		需求:商品表中beizhu列数据类型修改为int
+		alter table goods modify beizhu int;
+		删除列
+		需求:商品表中删除beizhu列
+		alter table goods drop column beizhu;
+	4.约束
+		主键约束:列中的数据不重复，每张表中只能有一个，并且不为空
+		唯一约束:列中的数据不重复，一张表中可以有多个，可以为空，作为主键约束的补充
+		非空约束:列中的数据不为空
+		检查约束:列中的数据是否满足条件
+		外键约束:列中的数据依赖于另外一张表中列的数据
+	5.删除表结构
+		语法:drop table 表;
+		删除goods表表结构
+		drop table goods;
+g.SQL的分类
+	SQL:结构化查询语言
+	DDL:数据库定义语言   create alter drop truncate
+	DML:数据库操作语言   insert delete update
+	DCL:数据库控制语言   grant  revoke
+	DQL:数据库查询语言   select
+h.数据的新增
+	字符类型数据需要加单引号
+	日期类型数据需要加单引号
+	数字卡类型数据直接使用
+	1.向指定列新增数据
+		语法:insert into 表(列1，列2) values(值1，值2);
+		注意:列和值的位置要对应
+		需求:向员工表中新增数据，名字 heygor,年龄 18
+		insert into 员工(名字,年龄) values('heygor',18);
+	2.向所有列新增数据
+		语法:insert into 表 values(值1,值2....);
+		需求:向员工表中新增数据,名字 gaga，年龄20，工号100,id 100
+		insert into 员工  values(100,'gaga',20,100);
+
+
+
+	
 
 
 
