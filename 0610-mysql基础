@@ -58,7 +58,7 @@ b.phpstudy简介
 		apache的端口：80
 			win+r--cmd--netstat -an | find "80"
 		mysqld的端口：3306
-			win+r--cmd--netstat -an | find "3306"
+			win+r--cmd--nettstat -an | find "3306"
 			netstat -an  查看电脑中开放的所有端口
 		补充：127.0.0.1==localhost==电脑本机
 		     0.0.0.0   任意IP地址
@@ -73,6 +73,40 @@ c.安装部署ecshop网店
 		用户名:     root
 		密码:       root
 		数据库名:   test
+d.mysql的登陆(命令提示符)
+	命令提示符:win+r--cmd
+	1.登陆命令
+		mysql 
+			登陆电脑本地数据库
+		mysql -u root -p(推荐本地)
+			管理员登陆本地数据库
+		mysql -h 127.0.0.1 -u root -p（远程连接）
+			管理员登陆IP为127.0.0.1的数据库
+	2.登陆方式
+		1>进入到命令所在文件夹
+			d:\
+			cd phpStudy\MySQL\bin
+		2>设置环境变量（让系统可以找到对应命令）
+			计算机--属性--高级--环境变量--系统变量--Path中添加
+			;D:\phpStudy\MySQL\bin
+			确定--确定--确定
+e.mysql基础命令
+	数据库分为两部分：数据库软件、数据库数据
+	数据库是由表组成
+	表是由数据组成
+	show databases;
+		查看当前有哪些数据库
+	select database();
+		查看当前数据库的名字
+	use test;
+		数据库切换为test
+	show tables;
+		查看当前数据库中有哪些表
+	select * from ecs_goods;
+		查看表ecs_gooods中有哪些数据
+
+		
+
 
 
 
