@@ -1,0 +1,78 @@
+1.常见软件架构
+	单机
+	b/s
+	c/s
+2.前端和后端
+	前端
+		html
+		css
+		js
+	后端
+		操作系统
+		web服务器
+		数据库服务器
+3.数据库
+	关系型数据库
+		informix  IBM+HP 军、政、运、银
+		db2       IBM    军、政、运、银
+		oracle    甲骨文  中大型公司
+		mysql     甲骨文  互联网公司
+		sqlserver 微软    传统类型公司
+	非关系型数据库
+		mongodb   大数据、爬虫
+		redis     缓存、消息队列
+		cassandra facebook
+4.mysql数据库的安装和配置
+a.软件下载
+	注意：
+	1>操作系统类型
+	2>操作系统位数
+	补充:
+	集成软件
+	wamp
+		w:windows   a:apache   m:mysql  p:php 
+	xampp
+		x:任意操作系统 p:perl
+	phpstudy
+b.phpstudy简介
+	1>文件夹简介
+		apache:   apache的主文件夹
+			bin:  存放命令的文件夹
+			conf: 存放配置文件的位置
+			logs: 存放日志的位置
+		mysql:    mysql的主文件夹
+			bin:  存放命令的文件夹
+			data: 存放数据的文件夹
+		www:
+			存放web项目的文件夹
+	2>服务和端口
+		服务:
+		apache的服务:httpd
+			win+r--cmd--tasklist | find "httpd"
+			tasklist   查看当前所有进程
+			|          前面的输出作为后面的输入
+			find       搜索
+		mysql的服务:mysqld
+			win+r--cmd--tasklist | find "mysqld"
+		端口：
+		apache的端口：80
+			win+r--cmd--netstat -an | find "80"
+		mysqld的端口：3306
+			win+r--cmd--nettstat -an | find "3306"
+			netstat -an  查看电脑中开放的所有端口
+		补充：127.0.0.1==localhost==电脑本机
+		     0.0.0.0   任意IP地址
+c.安装部署ecshop网店
+	1.安装并且启动phpstudy
+	2.解压ecshop压缩包
+	3.复制解压后的ecshop文件夹到phpstudy的WWW文件夹中
+	4.通过浏览器访问127.0.0.1/ecshop
+	注意:数据库账号：
+		数据库主机：localhost
+		端口号:     3306
+		用户名:     root
+		密码:       root
+		数据库名:   test
+
+
+
