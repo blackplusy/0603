@@ -58,7 +58,7 @@ b.phpstudy简介
 		apache的端口：80
 			win+r--cmd--netstat -an | find "80"
 		mysqld的端口：3306
-			win+r--cmd--nettstat -an | find "3306"
+			win+r--cmd--netstat -an | find "3306"
 			netstat -an  查看电脑中开放的所有端口
 		补充：127.0.0.1==localhost==电脑本机
 		     0.0.0.0   任意IP地址
