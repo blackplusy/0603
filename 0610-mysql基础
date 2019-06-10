@@ -166,6 +166,56 @@ h.数据的新增
 		语法:insert into 表 values(值1,值2....);
 		需求:向员工表中新增数据,名字 gaga，年龄20，工号100,id 100
 		insert into 员工  values(100,'gaga',20,100);
+i.数据的修改
+	语法:update 表 set 列=值 where 条件;
+	注意:如果不加where条件，修改的是整个列的数据，如果增加where条件，修改的是指定行的列
+	需求:修改员工表中名字是gaga的年龄为100
+	update 员工 set 年龄=100 where 名字='gaga';
+	需求:需要改员工表中所有年龄为0
+	update 员工  set 年龄=0;
+
+j.数据的删除
+	delete    DML   删除数据可以找回，可以删除指定数据
+	truncate  DDL   删除数据无法找回，只能删除所有数据
+	delete语法:
+		delete from 表 where 条件;
+		需求:删除员工表中名字为gaga的所有信息
+		delete from 员工 where 名字='gaga';
+		需求:删除员工表中所有信息
+		delete from 员工;
+	truncate语法:
+		truncate table 表;
+		需求:删除员工表中所有数据
+		truncate table 员工;
+k.数据的查询
+	1.查询的分类
+		简单查询
+		多表查询
+		分组查询
+		子查询
+	2.简单查询
+		http://book.ecmoban.com/images/db.htm
+		语法:select 列 from 表 where 条件;
+		select后面 from前面是和列相关的，where条件是和行相关的
+		所有的列可以用*来表示
+		查询指定列的数据
+		需求:查询商品表中所有商品的名称
+			select goods_name from ecs_goods;
+		查询指定行的数据
+		需求:查询商品名称是KD876的所有信息
+			select * from ecs_goods where goods_name='KD876';
+		查询指定行的列的数据
+		需求:查询商品名称是KD876的本店售价
+			select shop_price from ecs_goods where goods_name='KD876';
+		查询所有数据
+		需求:查询ecs_goods表中所有数据
+			select * from ecs_goods;
+			
+
+
+
+
+
 
 
 
