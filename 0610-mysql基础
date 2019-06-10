@@ -210,7 +210,66 @@ k.数据的查询
 		查询所有数据
 		需求:查询ecs_goods表中所有数据
 			select * from ecs_goods;
+		补充:修改字符集
+			1.修改数据库字符集utf8
+			2.修改表字符集utf8
+	3.where条件
+		a.比较运算符
+			>    大于
+			<    小于
+			=    等于
+			>=   大于等于
+			<=   小于等于
+			!=   不等于
+			<>   不等于
+			需求:查询ecs_goods表中本店售价高于3000的商品名称和本店售价
+			select goods_name,shop_price from ecs_goods where shop_price>3000;
+			需求:查询ecs_goods表中商品名称不是KD876的所有信息
+			select * from ecs_goods where goods_name<>'KD876';
+		b.关系
+			and 	同时满足条件
+			or      满足一个条件
+			not     不满足条件
+			需求:查询ecs_goods表中本店售价高于1000并且低于2000的所有商品名称
+			select goods_name from ecs_goods where shop_price>1000 and shop_price<2000;
+			需求:查询ecs_goods表中商品名称是KD876或者诺基亚的所有信息
+			select * from ecs_goods where goods_name='KD876' or goods_name='诺基亚';
+		c.模糊查询
+			当信息不完整时候使用，通常和字符类型一起使用
+			like    
+			_     一个字符
+			%     任意个字符
+			需求:查询ecs_goods表中商品名称是诺基亚开头的所有信息
+			select * from ecs_goods where goods_name like '诺基亚%';
+			需求:查询ecs_goods表中商品名称是6结尾的所有信息
+			select * from ecs_goods where goods_name like '%6';
+			需求:查询ecs_goods表中商品名称是6个字符的所有信息
+			select * from ecs_goods where goods_name like '______';
+		d.区间查询
+			between....and...
+			小在前，大在后，包括端点
+			需求：查询ecs_goods表中本店售价范围1600-3000之间所有商品信息
+			select * from ecs_goods where shop_price>=1600 and shop_price<=3000;
+			select * from ecs_goods where shop_price between 1600 and 3000;
+		e.空值查询
+			null 没有任何数据类型，没有任何值,不能用于比较和运算
+			查询的时候使用is null 或者is not null
+			需求:查询ecs_goods表中suppliers_id为空的所有信息
+			select * from ecs_goods where suppliers_id is null;
+		f.in
+			在...里面(或的关系)
+			需求:查询ecs_goods表中商品名称是KD876或者诺基亚的所有信息
+			select * from ecs_goods where goods_name in ('KD876','诺基亚');
 			
+
+
+
+
+
+
+
+
+
 
 
 
