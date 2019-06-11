@@ -142,3 +142,8 @@ delete from achievement where id=6;
 		source sakila-schema.sql;
 	6>导入sakila-data.sql;
 		source sakila-data.sql;
+
+问题:
+	查询以C开头的国家有哪些城市?
+	查询名字为MARY的所在城市?
+	查询名字为MARY的所在国家?
