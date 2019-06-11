@@ -191,12 +191,70 @@ select cat_name from ecs_category where cat_id in (select cat_id from ecs_goods 
 
 
 查询以C开头的国家有哪些城市?
-
+1.查询国家表中满足条件的country_id
+select country_id from country where country like 'C%';
+2.查询城市表中country_id为上面查询出来结果的城市名称
+select city from city where country_id in (select country_id from country where country like 'C%');
 
 查询客户表中名字为MARY的所在城市?
-
+1.查询客户表中满足条件的address_id
+select address_id from customer where first_name='MARY';
+2.查询地址表中add	ress_id为上面查询结果的city_id
+select city_id from address where address_id in (select address_id from customer where first_name='MARY');
+3.查询城市表中city_id为上面结果的城市名称
+select city from city where city_id in (select city_id from address where address_id in (select address_id from customer where first_name='MARY'));
 
 查询客户表中名字为MARY的所在国家?
+select country from country where country_id in (
+select country_id from city where city_id in (select city_id from address where address_id in (select address_id from customer where first_name='MARY')));
+
+
+分组查询
+按照某种属性进行分类
+语法:select 列 from 表
+		where 条件
+			group by 分组条件
+				having 分组后过滤条件;
+
+1.分组函数、聚合函数
+max     最大
+min		最小
+avg 	平均
+sum     求和
+count   计数
+分组函数通常和分组一起使用，也可以单独使用
+需求:查询ecs_goods表中最高本店售价，最低本店售价，平均本店售价
+select max(shop_price),min(shop_price),avg(shop_price) from ecs_goods;
+需求:查询ecs_goods表中最高本店售价的商品名称是？
+select max(shop_price) from ecs_goods;
+select goods_name from ecs_goods where shop_price=(select max(shop_price) from ecs_goods);
+
+2.分组
+每后面跟的就是分组条件
+需求:查询city表中每个country_id对应多少个城市
+select   country_id,count(city) from city group by country_id;
+需求:查询每个国家有多少个城市，要求显示国家名称，城市数量
+select * from country co,city c
+where co.country_id=c.country_id;
+
+select co.country,count(c.city) from country co,city c
+where co.country_id=c.country_id
+group by co.country;
+
+3.having
+where   分组前过滤，后面不能直接跟分组函数
+having  分组后过滤，后面可以直接跟分组函数
+
+需求:查询城市数量超过50的国家名称
+select co.country,count(c.city) from country co,city c
+where co.country_id=c.country_id
+group by co.country
+having count(c.city)>50;
+
+select co.country,count(c.city) from country co,city c
+where co.country_id=c.country_id
+and count(c.city)>50
+group by co.country;
 
 
 
