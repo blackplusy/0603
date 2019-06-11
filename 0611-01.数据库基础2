@@ -79,9 +79,31 @@ select 列 from 表1 inner join 表2 on 表1.列=表2.列;
 		where g.cat_id=c.cat_id
 		and c.cat_name='3G手机';
 
-参考文档：http://book.ecmoban.com/images/db.htm
-
 查询商品本店售价范围在2000和3000之间所有的商品的分类名称 
+a.分析列
+	shop_price
+	cat_name
+b.分析表
+	ecs_goods
+	ecs_category
+c.关联
+	select * from ecs_goods a,ecs_category b
+	where a.cat_id=b.cat_id;
+d.过滤
+	select b.cat_name from ecs_goods a,ecs_category b
+	where a.cat_id=b.cat_id
+	and a.shop_price between 2000 and 3000;
+
+补充：去重函数  distinct 
+select distinct(b.cat_name) from ecs_goods a,ecs_category b
+where a.cat_id=b.cat_id
+and a.shop_price between 2000 and 3000;
+
 
 查询分类名称是3G手机并且商品名称以诺基亚开头的商品名称 
+select g.goods_name from ecs_goods g,ecs_category c
+where g.cat_id=c.cat_id
+and c.cat_name='3G手机'
+and g.goods_name like '诺基亚%';
+
 
