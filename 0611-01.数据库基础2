@@ -107,3 +107,38 @@ and c.cat_name='3G手机'
 and g.goods_name like '诺基亚%';
 
 
+--4.jpg
+1.select s#,grade from sc where c#='C2';
+2.select sname from s where sname like 'D%';
+3.
+select s.s#,s.sname  from s,sc,c
+where s.s#=sc.s#
+and sc.c#=c.c#
+and c.cname='Maths';
+4.
+select s# from sc where c# in ('C2','C4');
+
+--2.jpg
+1.select  s.name from student s,achievement a
+where s.id=a.id and a.mark>85;
+2.select count(*) from achievement where mark>=90;
+3.
+insert into achievement values(7,80);
+4.
+update achievement set mark=87 where id=3;
+5.
+delete from student where name='Betty';
+delete from achievement where id=6;
+
+
+2.安装sakila数据库
+	1>下载sakila数据库
+	https://dev.mysql.com/doc/index-other.html
+	2>解压压缩包
+	3>进入到解压后的文件夹，地址栏中输入cmd
+	4>登陆mysql
+		mysql -u root -p
+	5>导入sakila-schema.sql;
+		source sakila-schema.sql;
+	6>导入sakila-data.sql;
+		source sakila-data.sql;
