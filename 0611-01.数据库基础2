@@ -257,4 +257,50 @@ and count(c.city)>50
 group by co.country;
 
 
+排序和分页
+语法：
+select 列 from 表
+	where 条件
+		group by 分组条件
+			having 分组后过滤条件
+				order by 排序条件;
+排序
+	顺序(从小到大)
+	order by 列 
+	order by 列 asc
+	倒序(从大到小)
+	order by 列 desc
+	需求:查询city表中所有数据，按照country_id顺序排列
+	select * from city order by country_id;
+	需求:查询city表中所有数据，按照country_id从大到小排列
+	select * from city order by country_id desc;
+	补充：双排序
+	select * from city order by country_id desc,city_id ;
 
+分页(limit)
+	需求:查询city表中前10条数据
+	select * from city limit 10;
+	需求:查询city表中10到20行数据
+	select * from city limit 10,10;
+
+
+左联查询（左表中所有数据都有）
+语法:select 列 from 左表 left join 右表 on 左表.列=右表.列；
+结果:内联查询结果+左表中有右表中没有的右表显示为空
+
+create table a1(
+	a  int
+);
+insert into a1 values(1),(2),(3);
+create table a2(
+	a int,
+	b char(10)
+);
+insert into a2 values(1,'a'),(2,'b'),(4,'d');
+select * from a1;
+select * from a2;
+select * from a1,a2 where a1.a=a2.a;
+select * from a1 left join a2 on a1.a=a2.a;
+
+右联查询(右表中所有数据都有)
+语法:select 列 from 左表 right join 右表 on 左表.列=右表.列；
