@@ -142,8 +142,61 @@ delete from achievement where id=6;
 		source sakila-schema.sql;
 	6>导入sakila-data.sql;
 		source sakila-data.sql;
+-----------------------------------------
+查询以C开头的国家有哪些城市?
 
-问题:
-	查询以C开头的国家有哪些城市?
-	查询客户表中名字为MARY的所在城市?
-	查询客户表中名字为MARY的所在国家?
+	select c.city from country co,city c
+	where co.country_id=c.country_id
+	and co.country like 'C%';
+查询客户表中名字为MARY的所在城市?
+	select c.city from city c,address a,customer cu
+	where c.city_id=a.city_id
+	and a.address_id=cu.address_id
+	and cu.first_name='MARY';
+
+查询客户表中名字为MARY的所在国家?
+	select co.country from 
+	city c,address a,customer cu,country co
+	where c.city_id=a.city_id
+	and a.address_id=cu.address_id
+	and co.country_id=c.country_id
+	and cu.first_name='MARY';
+
+子查询
+一条SQL语句的执行结果依赖于另外一条SQL语句
+子查询可以在数据新增、修改、删除、查询中使用
+需求:查询商品名称是KD876的分类名称
+	1.查询商品表中满足条件的cat_id
+	select cat_id from ecs_goods where goods_name='KD876';
+	2.查询分类表中cat_id为上面查询出来结果的分类名称
+	select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where goods_name='KD876');
+--2.jpg
+3.insert into achievement values((select id from student where name='Robert'),80);
+4.update achievement set mark=87 where id=(select id from student where name='Rose');
+5.
+delete from achievement where id=(select id from student where name='Betty');
+delete from student where name='Betty';
+
+子查询分为单行子查询和多行子查询
+单行子查询：查询子句返回的结果是一行，可以用=或者in
+多行子查询：查询子句返回的结果是多行，用in
+
+需求:查询商品名称以诺基亚开头商品的分类名称
+1.查询商品表中满足条件cat_id
+select cat_id from ecs_goods where goods_name like '诺基亚%';
+
+2.查询分类表中cat_id为上面查询出来结果的分类名称
+select cat_name from ecs_category where cat_id in (select cat_id from ecs_goods where goods_name like '诺基亚%');
+
+
+
+查询以C开头的国家有哪些城市?
+
+
+查询客户表中名字为MARY的所在城市?
+
+
+查询客户表中名字为MARY的所在国家?
+
+
+
