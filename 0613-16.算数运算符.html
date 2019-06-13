@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	//加法运算符
+		var departmentA=1000;
+		var departmentB=300;
+		var total=departmentA+departmentB;
+		document.write("公司的总人数："+total+"<br>");
+	//减法运算符
+		var totalGas="20升";
+		var used="7.5升";
+		var ovelplus=parseFloat(totalGas)-parseFloat(used);
+		document.write("车子开了呢100km，还剩汽油："+ovelplus+"升<br>");
+	//乘法运算符
+		var emplee=300;
+		var prize=379;
+		var total=emplee*prize;
+		document.write("预算是"+total+"<br>");
+	//出发运算符
+		var total=1000;
+		var person=3;
+		alert("每个人瓜分"+total/person+"元");
+	//取模运算符  1000以内的3的倍数
+		for (i=1;i<1000;i++)
+		{
+			//i++相当于i+1
+			// document.write(i);
+			if ( i%3==0 )
+			{
+				document.write(i+"<br>");
+			}
+		}
+	//负号运算符
+		var a=-1;
+		var b=-a;
+		alert(a+"取反"+b);
+	//正号运算符
+		var a=-1;
+		var b=+a;
+		var c=+5;
+		alert("a,b,c的值是："+a+","+b+","+c);
+	</script>
+</body>
+</html>
