@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	var a=NaN;
+	var b="123";
+	var c=123;
+	var d="1.23";
+	document.write("全局对象的isNaN的方法<br>");
+	var ta=isNaN( a );
+	document.write("a的值是否是NaN:"+ta+"<br>");
+	var tb=isNaN( b );
+	document.write("b的值是否是NaN:"+tb+"<br>");	
+	var tc=isNaN( c );
+	document.write("c的值是否是NaN："+tc+"<br>");
+	document.write("全局对象中parseInt方法<br>");
+	var ib=parseInt( b );
+	if ( ib==c )
+	{
+		document.write("可以解析的数值是："+ib+"<br>");
+	}
+	var id=parseFloat( d );
+	if ( id==1.23 )
+	{
+		document.write("解析为的数值是"+id+"<br>");
+	}
+	</script>
+</body>
+</html>
