@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	//10以内猜数字
+	var time=0;
+	while ( true )
+	{
+		time++;
+		var random=Math.floor( Math.random()*10);
+		alert(random);
+		if ( random==3 )
+		{
+			alert("老板您猜对le!,加薪！！！");
+			break;
+		}
+	}
+	alert(time+"次猜出来");
+
+	</script>
+</body>
+</html>
