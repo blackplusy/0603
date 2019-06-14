@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+	var i=prompt("请输入一个三位数：");
+	// var i=153;
+	// var bai=i/100;
+	var bai=parseInt(i/100);
+	var shi=parseInt((i/10)%10)
+	var ge=parseInt(i%10);
+	console.log(bai);
+	console.log(shi);
+	console.log(ge);
+	if ( bai*bai*bai+shi*shi*shi+ge*ge*ge==i )
+	{
+		document.write(i+"是水仙花数字");
+	}
+	//153    1**3+5**3+3**3==153
+	//parseInt   把字符转换为整型
+	</script>
+</body>
+</html>
