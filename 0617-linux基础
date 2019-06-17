@@ -84,4 +84,47 @@
 			cd ..       目录切换到上一级目录
 			cd -        目录切换到上一次操作所在目录
 			cd ~        目录切换到家目录
+	d.帮助
+		man       		官方手册
+			man ls      查看ls命令的官方手册
+		info            说明文档
+			info ls     查看ls命令的说明文档
+		--help          常见参数
+			ls --help   查看ls命令常用参数
+	e.linux中的网络设置
+		1>操作系统的网络设置
+			11>在win下面搜索一个和win相同网段的IP
+				win+r--cmd---ipconfig    查看win的IP地址 
+				可以搜索的范围是192.168.7.1-192.168.7.254
+				win+r--cmd--ping 192.167.7.44
+				如果有返回时间，说明该IP已经有人用，如果提示目标不可达，无法访问等说明该IP在局域网中没人使用，可以用于linuxIP设置
+			12>linux中打开终端，查看当前IP地址
+				ifconfig         查看当前可用网卡的网卡信息
+				ifconfig eth0    查看linux中第一块网卡的网卡信息(eth0是linux第一块网卡)
+			13>设置网络的方式
+				131>临时设置(重启后失效)
+					ifconfig eth0 192.168.7.44 
+					重启网络命令：
+					service network restart
+				132>命令设置(重启后生效)
+					setup--网络设置--edit devices--eth0--名称、设备不要改动、取消DHCP(空格)、设置IP信息和子网掩码--ok--save--save&quit--退出-service network restart
 
+					获取IP地址方式:
+					static  静态设置
+					dhcp    动态获取
+				133>配置文件设置
+		2>虚拟机的网络设置
+			右键标签--设置--网络适配器--桥接、复制物理网络链接状态--确定
+			虚拟机的网络
+			21>桥接         客户机在宿主机网络上建立一条新网线，可以和局域网中其他主机进行通信
+			22>网络地址转换  客户机通过共享宿主机网络实现上网，不能和局域网中其他主机进行通信
+			23>仅主机       客户机和宿主机的私有通道，无法和局域网中其他主机进行通信
+
+		3>测试网络
+			win:		win+r--cmd--ping linux的ip
+			linux:      终端--ping win的ip
+		4>常用的linux管理工具
+			putty
+			secure crt
+			xshell
+			
