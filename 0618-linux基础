@@ -245,6 +245,43 @@ e.末行模式
 	vmstat   监控系统资源
 	ifocnfig 监控网络
 	mount    查看系统挂载情况
+9.linux下的软件安装
+	a.软件安装基础
+		安装方式
+			1.手动安装(rpm)
+			2.源码安装
+			3.自动安装(yum)
+			4.二进制文件安装
+		手动安装(rpm)
+			软件通常在光盘的Server目录下
+			光盘挂载后显示的type是iso9660
+			/dev/scd0 光驱
+			手动安装包通常以.rpm结尾
+	b.安装部署vsftpd服务
+		1>安装操作系统
+		2>关闭防火墙、selinux
+			service iptables stop  关闭防火墙
+			setenforce 0           关闭selinux
+		3>设置IP地址、主机名、绑定主机名
+		4>加载光驱
+			右键标签--设置--cd/dvd--使用iso映像文件--选择光盘iso--确定
+		5>查看光驱挂载目录
+			mount 
+			搜索type是iso9660对应的目录
+		6>进入到光盘所在目录的Server目录
+			cd /media/RHEL_5.4\ i386\ DVD/Server/
+		7>搜索vsftpd相关软件
+			ls  | grep vsftpd
+		8>安装vsftpd服务
+			 rpm -ivh vsftpd-2.0.5-16.el5.i386.rpm
+		9>启动vsftpd服务
+			service vsftpd start
+		10>测试
+			浏览器中输入ftp://linux的IP
+			复制文件到/var/ftp目录下
+
+
+
 	
 
 
