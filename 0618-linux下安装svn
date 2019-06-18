@@ -1,0 +1,136 @@
+linux 下安装svn服务器
+1.关闭防火墙
+	[root@localhost ~]# service iptables stop
+2.关闭selinux
+	[root@localhost ~]# vim /etc/selinux/config
+	SELINUX=disabled
+3.配置网络
+	[root@localhost ~]# vim /etc/sysconfig/network-scripts/ifcfg-eth0
+	DEVICE=eth0
+	BOOTPROTO=static
+	HWADDR=00:0C:29:9D:03:02
+	ONBOOT=yes
+	IPADDR=10.10.104.12
+	NETMASK=255.255.255.0
+	[root@localhost ~]# service network restart
+	Shutting down interface eth0:                              [  OK  ]
+	Shutting down loopback interface:                          [  OK  ]
+	Bringing up loopback interface:                            [  OK  ]
+	Bringing up interface eth0:                                [  OK  ]
+4.设置主机名
+	修改/etc/sysconfig/network中的HOSTNAME为自己的主机名，我的主机名是hey.gor.com
+	[root@localhost ~]# vim /etc/sysconfig/network
+	NETWORKING=yes
+	NETWORKING_IPV6=no
+	HOSTNAME=hey.gor.com
+5.绑定主机名
+	在/etc/host文件中新增一行，前面
+	[root@localhost ~]# vim /etc/hosts
+	127.0.0.1               localhost.localdomain localhost
+	::1             localhost6.localdomain6 localhost6
+	10.10.104.12    hey.gor.com
+6.虚拟机加载光驱
+	右键标签--设置--cd/dvd--设备状态：已连接、启动时连接，连接：使用iso映像文件--浏览搜索光盘所在位置--确定
+7.linux中挂载光驱	
+	[root@localhost ~]# mount /dev/scd0 /mnt/ -o loop
+8.进入到光盘所在目录
+	[root@localhost ~]# cd /mnt/Server/
+9.安装web服务器apache
+	[root@localhost Server]# rpm -ivh postgresql-libs-8.1.11-1.el5_1.1.i386.rpm
+	[root@localhost Server]# rpm -ivh apr-1.2.7-11.el5_3.1.i386.rpm
+	[root@localhost Server]# rpm -ivh apr-util-1.2.7-7.el5_3.2.i386.rpm
+	[root@localhost Server]# rpm -ivh httpd-2.2.3-31.el5.i386.rpm        （apache的主服务）
+10.测试apache服务器是否安装成功
+	a.启动apache服务
+	[root@localhost Server]# service httpd start
+	Starting httpd:                                            [  OK  ]
+	b.浏览器中输入linux的ip
+	查看欢迎页面
+	elinks 10.10.104.12
+11.安装svn模块
+	[root@localhost Server]# rpm -ivh subversion-1.4.2-4.el5_3.1.i386.rpm
+	[root@localhost Server]# rpm -ivh mod_dav_svn-1.4.2-4.el5_3.1.i386.rpm
+12.检查模块是否安装完毕
+	[root@localhost Server]# ls /etc/httpd/modules/ |grep svn
+	mod_authz_svn.so
+	mod_dav_svn.so
+	如果出现上述2个模块说明模块安装成功
+13.配置svn
+	a.进入到apache配置文件所在目录
+		[root@localhost Server]# cd /etc/httpd/conf
+	b.修改httpd.conf配置文件在200行左右增加下列代码，然后保存退出
+		LoadModule dav_svn_module modules/mod_dav_svn.so
+		LoadModule authz_svn_module modules/mod_authz_svn.so
+	c.重启apache服务测试配置是否成功
+		[root@localhost conf]# service httpd restart
+		Stopping httpd:                                            [  OK  ]
+		Starting httpd: [Tue Aug 16 18:35:03 2016] [warn] module dav_svn_module is already loaded, skipping
+		[Tue Aug 16 18:35:03 2016] [warn] module authz_svn_module is already loaded, skipping                                                              [  OK  ]
+14.创建版本库
+	a.进入到指定目录
+		[root@localhost conf]# cd /opt/
+	b.创建数据目录
+		[root@localhost opt]# mkdir svn/heygor -p
+	c.进入到svn所在目录
+		[root@localhost opt]# cd svn
+	d.创建版本库
+		[root@localhost svn]# svnadmin create heygor/0810
+	补充：可以在heygor目录下看到0810目录
+15.创建配置文件
+	a.创建用户配置文件
+		[root@localhost svn]# htpasswd -c user.conf hey   创建用户配置文件user.conf,添加用户名hey，并且设置密码
+		New password:
+		Re-type new password:
+		Adding password for user hey
+		补充：查看配置文件
+		[root@localhost svn]# cat user.conf
+		hey:gtMtImge5xF9w
+		新增用户：
+		[root@localhost svn]# htpasswd -m user.conf gor   向用户配置文件中新增访问用户gor
+		New password:
+		Re-type new password:
+		Adding password for user gor
+	b.创建访问控制文件
+		[root@localhost svn]# vim access.conf
+		[groups]   #对用户进行分组控制权限
+		admin=hey
+		develop=gor
+		[heygor:/] #对访问目录权限进行设置
+		@admin=rw
+		@develop=r
+		[/]        #对访问目录权限进行设置
+		*=rw
+	c.修改apache的配置文件
+	在文件的最后增加以下内容，保存退出
+		[root@localhost svn]# vim /etc/httpd/conf/httpd.conf
+		<Location /svn/>
+		  DAV svn
+		  SVNParentPath /opt/svn/heygor/          #项目所在目录
+		  AuthType Basic
+		  AuthName "SVN USER PASSWORD"
+		  SVNListParentpath on
+		  AuthUserFile /opt/svn/user.conf         #用户配置文件位置
+		  AuthzSVNAccessFile /opt/svn/access.conf #访问控制文件位置
+		  Require valid-user
+		</Location>
+		RedirectMatch ^(/svn)$ $1/
+16.修改svn数据文件目录权限
+	[root@localhost svn]# chmod 777 -R /opt/svn/
+	[root@localhost svn]# ll -d /opt/svn/
+	drwxrwxrwx 3 root root 4096 Aug 16 18:54 /opt/svn/
+17.重新启动apache服务
+	[root@localhost svn]# service httpd restart
+	Stopping httpd:                                            [  OK  ]
+	Starting httpd: [Tue Aug 16 18:59:08 2016] [warn] module dav_svn_module is already loaded, skipping
+	[Tue Aug 16 18:59:08 2016] [warn] module authz_svn_module is already loaded, skipping
+	                                                           [  OK  ]
+18.通过浏览器或者svn客户端访问linux的ip地址/svn
+	浏览器：http://10.10.104.12/svn
+
+
+
+
+
+
+
+
