@@ -206,6 +206,47 @@ e.末行模式
 					修改文件拥有组为bin
 				chown root:root install.log
 					修改文件拥有者和拥有组为root
+7.搜索和管道
+	搜索
+		find    	搜索文件，速度慢，稳定
+			find /etc/ -name conf     
+				搜索/etc下名字为conf的文件
+			find /etc/ -name *.conf
+				搜索/etc下名字以.conf结尾的文件
+		locate 		搜索文件，速度快
+			locate passwd
+				系统中搜索passwd文件
+		updatedb
+			刷新系统数据库
+		grep       	搜索内容
+			grep root /etc/passwd
+				/etc/passwd文件中搜索含有root关键字的行
+			grep ^r /etc/passwd
+				/etc/passwd文件中搜索以r开头的行
+			grep bash$ /etc/passwd
+				/etc/passwd文件中搜索bash结尾的行
+	管道
+		|  前面的输出作为后面的输入
+		cat /etc/passwd |grep root
+		/etc/passwd文件中搜索含有root关键字的行
+		head -7 install.log|tail -1
+		查看install.log文件第7行
+8.系统管理命令
+	top  	监控系统资源
+	ps -ef  查看系统的进程
+		ps -ef |grep sshd   查看sshd进程是否正常运行
+		ps -ef |grep httpd  查看apache进程是否正常运行
+		ps -ef |grep tomcat 查看tomcat进程是否正常运行
+	pidof   查看进程id
+	kill -9  pid 暴力杀
+	    -15  pid 温柔杀
+	df -h    查看磁盘使用率
+	free -m  查看内存使用情况
+	vmstat   监控系统资源
+	ifocnfig 监控网络
+	mount    查看系统挂载情况
+	
+
 
 
 
