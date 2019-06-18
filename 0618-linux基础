@@ -79,4 +79,59 @@ e.末行模式
 		TYPE=Ethernet                       上网类型
 	重启服务后生效
 		service network restart
+3.设置主机名
+	a.查看主机名
+		hostname
+	b.临时修改主机名(重启系统后失效)
+		FQDN：完全合格域名
+		www.sina.com
+		heygor.com.cn
+		hostname heygor.com.cn            设置当前主机名为heygor.com.cn
+	c.永久修改主机名(重启后生效)
+		vim /etc/sysconfig/network
+		HOSTNAME=heygor.com.cn
+4.绑定主机名
+	vim /etc/hosts
+	192.168.7.196   heygor.com.cn
+	你电脑IP         主机名
+5.包、压缩文件、压缩包
+	a.包：打包（tar）
+		注意:包的名字通常以.tar结尾
+		tar -cvf test.tar Desktop/ install.log*
+			创建包文件test.tar 打包内容Desktop目录和install.log开头的文件
+		tar -tvf test.tar
+			查看test.tar包文件中文件的文件属性信息
+		tar -xvf test.tar
+			解包包文件test.tar到当前目录下
+		tar -xvf test.tar -C /opt/
+			解包包文件test.tar到/opt目录下
+		注意:指定解包目录需要加-C
+	b.压缩文件(gzip)
+		du -sh install.log   
+			查看install.log文件大小
+		gzip install.log
+			压缩文件install.log
+		gzip -l install.log.gz
+			查看压缩文件install.log.gz的压缩属性信息
+		gzip -d install.log.gz
+			解压压缩文件install.log到当前目录下
+	c.压缩包(tar)
+		注意:压缩包文件通常以.tar.gz或者.tgz结尾
+		压缩包:先打包后压缩
+		tar -cvf test1.tar install.log*
+		gzip test1.tar
+
+		tar -czvf test2.tgz install.log*
+			创建压缩包文件test2.tgz打包压缩内容install.log开头的文件
+		tar -tzvf test2.tgz
+			查看压缩包文件test2.tgz的内容
+		tar -xzvf test2.tgz
+			解压压缩包test2.tgz到当前目录下
+
+
+
+
+
+
+
 
