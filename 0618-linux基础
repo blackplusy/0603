@@ -128,6 +128,85 @@ e.末行模式
 		tar -xzvf test2.tgz
 			解压压缩包test2.tgz到当前目录下
 
+6.用户和权限
+	a.用户
+		/etc/passwd     用户配置配置文件
+		/etc/shadow     密码配置文件
+		/etc/group      组配置文件
+		a1.创建
+			useradd simon  创建用户simon
+			passwd  simon  给用户simon设置密码
+		a2.修改
+			锁定和解锁
+			usermod -L simon 锁定simon用户
+			usermod -U simon 解锁simon用户
+		a3.删除
+			userdel -r simon 删除simon用户
+	b.权限
+		b1.查看权限
+			ls -l install.log
+			-rw-r--r-- 1 root root 36754 06-18 09:32 install.log
+		b2.文件属性信息
+			-rw-r--r-- 1 root root 36754 06-18 09:32 install.log
+			1.文件类型
+				d：目录
+				-：普通文件
+			2-10.文件权限
+			11.文件节点
+			12.文件拥有者
+			13.文件拥有组
+			14.文件大小
+			15.最后修改时间
+			16.文件名
+		b3.权限的分类
+			r：读
+				文件：可以查看文件内容
+				目录：可以列表文件
+			w：写
+				文件:可以修改文件内容
+				目录：可以创建、删除、重命名文件
+			x：执行
+				文件:可执行
+				目录：可以进入
+		b4.权限的分组
+			rw-          r--          r--
+			拥有者权限   拥有组权限     其他人权限
+		b5.系统判断权限的过程
+			1.判断用户是否是文件拥有者，如果是的话赋予拥有者权限
+			2.如果不是，判断是否为拥有组成员，如果是，赋予拥有组权限
+			3.如果不是，赋予其他人权限
+			补充:
+			id root  查看root用户的组信息
+		b6.修改权限
+			chmod：直接修改权限
+				字符方式
+					u      	拥有者
+					g 		拥有组
+					o 		其他人
+					a 		所有人
+					chmod u+x install.log
+						拥有者增加执行权限
+					chmod g+x,o+x install.log
+						拥有组和其他人增加执行权限
+					chmod a-x install.log
+						所有人取消执行权限
+				数字方式
+					r:4
+					w:2
+					x:1
+					-:0
+					chmod 777 install.log
+						所有用户拥有读写执行权限
+					chmod 000 install.log
+						所有用户没有任何权限
+			chown：通过修改文件属主来修改权限
+				chown gaga install.log
+					修改文件拥有者为gaga
+				chown :bin install.log
+					修改文件拥有组为bin
+				chown root:root install.log
+					修改文件拥有者和拥有组为root
+
 
 
 
