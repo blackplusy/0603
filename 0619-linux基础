@@ -196,6 +196,47 @@ linux的启动模式
 			ps -ef |grep tomcat
 			netstat -an |grep 8080
 			浏览器中输入http://linux的ip:8080
+	d.tenorder项目安装和部署
+		1>安装配置好JDK
+		2>安装配置好tomcat
+		3>删除tomcat中的webapps中的所有文件
+			rm -rf apache-tomcat-7.0.77/webapps/*
+		4>把tenorder项目解压后传入tomcat的webapps目录中
+		5>导入数据库
+			0.目录切换到tenroder所在目录(tenorder.sql所在)
+				cd /root/apache-tomcat-7.0.77/webapps/tenorder/
+			a.登陆数据库
+				mysql -u root -p
+			b.创建数据库ten
+				create database ten;
+			c.进入到ten数据库
+				use ten;
+			d.导入数据
+				source tenorder.sql;
+			e.退出
+				exit
+		6>修改数据库的配置
+			 vim /root/apache-tomcat-7.0.77/webapps/tenorder/WEB-INF/classes/database.properties
+			 参考安装文档中设置
+		7>重启tomcat
+			进入到tomcat的bin目录
+				cd /root/apache-tomcat-7.0.77/bin/
+			关闭tomcat服务
+				./shutdown.sh
+			启动tomcat服务
+				./startup.sh
+		8>浏览器访问
+			http://linux的IP:8080/tenorder
+			后台地址
+			http://linux的IP:8080/tenorder/admin
+			admin
+			admin
+
+
+
+
+
+
 
 
 
