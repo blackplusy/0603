@@ -128,6 +128,35 @@ linux的启动模式
     		设置mysql管理员root的密码为test
     	14>浏览器中输入
     		http://linux的IP/ecshop 根据提示安装
+2.二进制软件包的安装
+	a.mongodb的安装和部署
+		1>把mongodb压缩包传入linux中
+		2>解压压缩包
+			tar -xzvf mongodb-linux-i686-3.0.15.tgz
+		3>设置环境变量
+			环境变量设置可以在/etc/profile中或者~/.bash_profile中进行设置
+			/etc/profile   	设置全局变量
+			~/.bash_profile 设置用户变量
+			文件中PATH最后增加
+				：mongodb的bin目录
+		4>使环境变量生效
+			source .bash_profile
+		5>启动mongodb服务
+			mkdir /data    创建数据目录
+			mongod --dbpath /data --logpath /data/mongo.log --fork
+			mongod         mongodb的主服务
+			--dbpath       数据存放目录(文件夹)
+			--logpath      日志存放路径(文件)
+			--fork         后台执行
+		6>测试
+			ps -ef |grep mongod
+				查看mongodb进程是否正常
+			netstat -an |grep 27017
+				查看mongodb端口是否正常
+			注意:mongodb的数据库的端口是27017
+
+
+
 
 
 
