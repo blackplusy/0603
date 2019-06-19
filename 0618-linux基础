@@ -243,7 +243,7 @@ e.末行模式
 	df -h    查看磁盘使用率
 	free -m  查看内存使用情况
 	vmstat   监控系统资源
-	ifocnfig 监控网络
+	ifconfig 监控网络
 	mount    查看系统挂载情况
 9.linux下的软件安装
 	a.软件安装基础
