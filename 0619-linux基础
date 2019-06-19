@@ -99,6 +99,39 @@ linux的启动模式
 				ps -ef |grep mysqld
 				mysql的端口:3306
 				netstat -an |grep 3306
+	b.搭建ecshop网店项目
+		操作系统：	rhel5
+		web服务器:	apache
+		数据库服务器:mysql
+		1>安装操作系统
+		2>设置IP、主机名、绑定主机名
+		3>关闭防火墙、关闭seliunx
+		4>设置好yum
+		5>安装apache相关组件
+			yum install http* -y
+		6>安装php相关组件
+			yum install php* -y
+		7>安装mysql相关组件
+			yum install mysql* -y
+		8>启动mysql服务
+			service mysqld start
+		9>启动apache服务
+			service httpd start
+		10>测试
+			ps -ef |grep httpd
+    		ps -ef |grep mysqld
+    	11>把ecshop文件解压通过winscp传入/var/www/html中
+    	12>设置ecshop目录权限
+    		chmod 777 -R /var/www/html/ecshop
+    	13>设置mysql的密码
+    		mysqladmin -u root password 'test'
+    		设置mysql管理员root的密码为test
+    	14>浏览器中输入
+    		http://linux的IP/ecshop 根据提示安装
+
+
+
+
 
 
 
