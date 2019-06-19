@@ -154,6 +154,49 @@ linux的启动模式
 			netstat -an |grep 27017
 				查看mongodb端口是否正常
 			注意:mongodb的数据库的端口是27017
+	b.jdk的安装和配置
+		jdk: java的开发环境
+		jre: java的运行环境
+		1>软件下载(官网oracle)
+			x86   32位操作系统  i386 i686 i586
+			x64   64位操作系统  
+		2>把jdk的压缩包传入linux中并且解压，重命名jdk
+			tar -xzvf jdk-7u7-linux-i586.tar.gz
+			mv jdk1.7.0_07/ jdk
+		3>linux下的jdk配置
+			vim .bash_profile 
+			在PATH和EXPORT中间添加
+			export JAVA_HOME=/root/jdk
+				java的软件所在目录
+			export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+				添加java的命令所在路径到环境变量中
+			export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+				添加java相关的库到环境变量中
+		4>测试java版本
+			java -version
+		5>使环境变量生效
+			source .bash_profile
+	c.tomcat的安装和配置
+		1>下载tomcat，并且传入linux中
+		2>解压tomcat压缩包
+			tar -xzvf apache-tomcat-7.0.77.tar.gz
+		3>目录简介
+			bin    存放命令
+			lib    存库文件
+			logs   存日志
+			temp   存放临时文件
+			conf   存放配置文件
+			webapps存放项目
+		4>启动tomcat服务
+			进入到tomcat的bin目录
+			cd /root/apache-tomcat-7.0.77/bin
+			执行startup.sh
+			./startup.sh
+		5>测试
+			ps -ef |grep tomcat
+			netstat -an |grep 8080
+			浏览器中输入http://linux的ip:8080
+
 
 
 
