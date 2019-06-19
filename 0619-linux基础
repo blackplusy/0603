@@ -1,0 +1,111 @@
+who
+whoami
+pwd
+ls
+cd
+man
+info
+setup
+ping
+service
+ifconfig
+mkdir
+cp
+mv
+rm
+touch
+cat
+less
+more
+head
+tail
+vi
+tar
+gzip
+du -sh
+useradd
+passwd
+usermod
+userdel
+id
+chmod
+chown
+find
+locate
+grep
+top
+ps
+free
+mount
+kill
+netstat -an  查看端口
+rpm
+--------------------------------------------------------
+chkconfig    开机启动
+	--list
+chkconfig --level 35 iptables off
+	开始时候关闭防火墙服务
+注意:防火墙服务
+		iptables
+		ip6tables
+linux的启动模式
+	vim /etc/inittab
+	init 0   关闭
+	init 3   进入到字符界面
+	init 5   进入到图形界面
+	init 6   重启
+忘记密码
+	1.重启
+	2.启动菜单按e
+	3.e
+	4.选择kernel按e
+	5.增加    1
+	6.回车
+	7.b
+	8.passwd root
+	9.exit
+1.自动安装
+	软件安装的方式
+		a.手动
+		b.源码
+		c.自动
+		d.二进制
+	a.自动安装(yum)
+		1>创建目录用于挂载
+			mkdir /yum
+		2>加载光驱
+			右键标签--设置--cd/dvd--使用iso文件(已连接、启动时链接打勾)--确定
+		3>挂载光驱
+			注意:一般来说/dev/scd0是默认光驱，或者输入mount查看type是iso9660的对应硬件
+			mount -o loop /dev/scd0 /yum
+		4>修改配置文件
+			vim /etc/yum.repos.d/rhel-debuginfo.repo
+			[rhel-debuginfo]               标签名
+			name=test                      标签名
+			baseurl=file:///yum/Server     yum命令到哪里去找可以安装的软件包
+			enabled=1                      是否开启自动安装(1是开启，0是关闭)
+			gpgcheck=0                     是否开启软件包检查(1是开启,0是关闭)
+		5>查看可以安装软件列表
+			yum clean all                  清理yum缓存
+			yum list                       查看可以安装软件的列表
+		6>安装软件
+			安装mysql相关软件
+				yum list | grep mysql
+				yum install mysql* -y
+			启动mysql服务
+				service mysqld start
+			检查mysql服务
+				mysql的服务名:mysqld
+				ps -ef |grep mysqld
+				mysql的端口:3306
+				netstat -an |grep 3306
+
+
+
+
+
+
+
+
+
+
