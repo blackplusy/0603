@@ -22,4 +22,38 @@ b.软件安装
 	安装第一步:add python to path 打勾
 	傻瓜安装(下一步)
 
+3.python的开发工具
+	pycharm
+	eclipse+pydev
+	sublime text
+	vim
+
+4.python的运行环境
+	开发工具
+	win+r--cmd--python
+	win+r--cmd--python 文件名
+	python idle
+
+5.python的输入和输出
+	a.输出
+		应用场景
+			1.登陆网站时候提示
+			2.您访问的页面不存在
+			3.程序调试时候
+			4.某宝上搜索商品返回出来内容
+		python的输出
+			1.直接输出
+			2.变量输出
+			3.函数输出
+			4.格式化输出
+	b.输入
+		应用场景
+			1.输入用户名密码时候
+			2.某宝上搜素商品时候
+			3.直播时候调用声音和摄像头
+		python的输入
+			input()     python2中接受键盘传入的数字信息，python3中接受键盘传入的字符信息
+			raw_input() python2中接受键盘传入字符信息，python3中已经废弃
+			
+
 
